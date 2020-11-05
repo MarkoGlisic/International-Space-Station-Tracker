@@ -17,7 +17,7 @@
 
 ## Features
 List of features ready and TODOs for future development
-* Displays real-time altitude, longitude, visibility, velocity of International Space Station
+* Displays real-time latitude, longitude, altitude, visibility, velocity of International Space Station
 * Displays marker on map, where ISS is currently at.
 * Once map marker is hovered, it will display a popup with random fun facts about the International Space Station
 
@@ -27,6 +27,3 @@ To-do list:
 
 ## Status
 Project is: in progress
-
-
-
