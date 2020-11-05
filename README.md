@@ -11,6 +11,9 @@
 * CSS
 * JavaScript
 
+## Screenshots
+![Example screenshot](./Icons/iss-screenshot-for-readme.PNG)
+
 ## Features
 List of features ready and TODOs for future development
 * Displays real-time altitude, longitude, visibility, velocity of International Space Station
