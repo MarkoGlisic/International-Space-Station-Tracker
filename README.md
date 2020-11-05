@@ -28,4 +28,4 @@ To-do list:
 * Refactor Code
 
 ## Status
-Project is: in progress
+Project is: In Progress
