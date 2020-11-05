@@ -39,7 +39,7 @@ function getRandomQuote(array) {
 // Making a marker with a custom icon
 
 const internationalSpaceStationIcon = L.icon({
-  iconUrl: '../Icons/international-space-station-marker.png',
+  iconUrl: '../icons/international-space-station-marker.png',
   iconSize: [80, 72],
   iconAnchor: [40, 36]
 });
@@ -94,9 +94,9 @@ async function getDataFromIssApi() {
 
   // Chaning Visibility Icon depending on value.
   if (visibility === 'eclipsed') {
-    document.getElementById('weather-icon').src = '../Icons/eclipsed-icon-48.png';
+    document.getElementById('weather-icon').src = '../icons/eclipsed-icon-48.png';
   } else {
-    document.getElementById('weather-icon').src = '../Icons/daylight-icon-48.png';
+    document.getElementById('weather-icon').src = '../icons/daylight-icon-48.png';
   }
 }
 
