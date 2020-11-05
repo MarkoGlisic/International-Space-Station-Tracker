@@ -11,6 +11,8 @@
 * HTML
 * CSS
 * JavaScript
+* Leaflet - www.leafletjs.com
+* OpenStreetMap for tiles - www.openstreetmap.org
 
 ## Screenshots
 ![Example screenshot](./Icons/iss-screenshot-for-readme.PNG)
