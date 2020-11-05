@@ -3,6 +3,7 @@
 
 ## Table of contents
 * [Technologies](#technologies)
+* [Screenshots](#screenshots)
 * [Features](#features)
 * [Status](#status)
 
