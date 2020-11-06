@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="./Icons/planet-outline.svg"/>
 
+    <!-- INCLUDING LEAFLET CSS AND JS-->
 
     <link
       rel="stylesheet"
@@ -29,6 +30,9 @@
 
 
     <div class="grid-container">
+
+      <!-- SIDEBARS ONE AND TWO -->
+
       <div class="sidebar-one" id="sidebar-shadow-fix-one">
         <img src="./Icons/international-space-station-logo.png" alt="" id="iss-logo-sidebar">
         <h1 id="app-main-heading">Where is the ISS?</h1>
@@ -41,10 +45,16 @@
           <button id="more-information-button">LEARN MORE</button>
         </a>
       </div>
+
+      <!-- MAP CONTAINER -->
+
       <div class="map-container">
-        <div id="international-space-station-map">
+        <div id="international-space-station-map"> <!-- map itself -->
         </div>
         <div class="card-container">
+
+          <!-- CARD BELOW MAP -->
+
           <div class="card">
             <div class="card-content-one">
               <p>
@@ -55,31 +65,35 @@
               <p>
                 <span class="text-decoration">Longitude: </span> <br><span id="longitude"></span><span  id="celsius-character">°</span>
               </p>
-            </div>  
+            </div>
+
           </div>
+
           <div class="card">
             <div class="card-content-one">
               <div class="pop-up-window">
                 <p id="information-shown-when-clicked">Units shown are in kilometers</p>
               </div>
               <img src="./Icons/information-icon-16.png" alt="" id="information-icon">
-              
               <p>
                 <span class="text-decoration">Altitude: </span> <br><span id="altitude"></span>
               </p>
             </div>
+
             <div class="card-content-two">
               <p>
                 <span class="text-decoration">Velocity: </span> <br><span id="velocity"></span
               </p>
             </div>  
           </div>
+
           <div class="card">
             <p>
               <span class="text-decoration">Visibility </span><span id="visibility"></span>
             </p>
             <img src="./Icons/eclipsed-icon-48.png" alt="" class="weather-icon" id="weather-icon">
           </div>
+
         </div>
       </div>
     </div>

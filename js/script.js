@@ -1,5 +1,7 @@
-// Making a map and tiles
-// Setting a higher initial zoom to make effect more obvious
+/*
+  MAKING A MAP AND ADDING TILES TO IT
+*/
+
 const mymap = L.map('international-space-station-map').setView([0, 0], 3);
 const attribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -10,7 +12,9 @@ const tiles = L.tileLayer(tileUrl, { attribution, minZoom: 3, maxZoom: 10 });
 tiles.addTo(mymap);
 
 
-// Getting random quotes 
+/*
+  GETTING A RANDOM QUOTE THAT WILL BE DISPLAYED IN LEAFLET POPUP 
+*/
 
 const quotes = [
   "241 individuals from 19 countries have visited the International Space Station",
@@ -31,22 +35,26 @@ function getRandomQuote(array) {
   let randomQuote = array[Math.floor(Math.random() * (maximum - minimum + 1)) + minimum];
 
   if (randomQuote === 'undefined') {
-    return array[0];
+    return array[0]; // In case of value being undefined, set default value to be index 0 of quotes array
   } else return randomQuote;
 }
 
 
-// Making a marker with a custom icon
+/*
+  MAKING A MARKER WITH CUSTOM ICON THAT WILL BE DISPLAYED ON MAP
+*/
 
 const internationalSpaceStationIcon = L.icon({
-  iconUrl: '../icons/international-space-station-marker.png',
+  iconUrl: '../Icons/international-space-station-marker.png',
   iconSize: [80, 72],
   iconAnchor: [40, 36]
 });
 let marker = L.marker([0, 0], { icon: internationalSpaceStationIcon }).addTo(mymap);
 
 
-// specify popup options 
+/*
+ SPECIFYING CUSTOM OPTIONS FOR LEAFLET POPUP
+*/
 
 let customOptions =
     {
@@ -58,32 +66,32 @@ let customOptions =
 
 let customPopup;
 
+/*
+  ENABLING POPUP ONCE MOUSE POINTER HOVERS OVER THE MARKER ON MAP
+*/
+
 marker.on('mouseover', function (e) {
     this.openPopup();
     customPopup = getRandomQuote(quotes);
-    // bind the custom popup 
+    // Binding the custom popup to map marker 
     marker.bindPopup(customPopup, customOptions);
 });
 marker.on('mouseout', function (e) {
     this.closePopup();
 });
 
+/*
+  CONNECTING TO API AND GETTING DATA FROM IT
+*/
 
-// API 
-
-const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
+const API_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 
 async function getDataFromIssApi() {
-  const response = await fetch(api_url);
+  const response = await fetch(API_URL);
   const data = await response.json();
   const { latitude, longitude, altitude, velocity, visibility } = data;
 
-  
-  // Always set the view to current longitude and latitude
-  mymap.setView([latitude, longitude], mymap.getZoom());
-  marker.setLatLng([latitude, longitude]);
-  
   
   document.getElementById('latitude').textContent = latitude.toFixed(2);
   document.getElementById('longitude').textContent = longitude.toFixed(2);
@@ -91,17 +99,29 @@ async function getDataFromIssApi() {
   document.getElementById('altitude').textContent = altitude.toFixed(2);
   document.getElementById('visibility').textContent = visibility;
 
+  /*
+    MAKING SURE THAT VIEW IS SET TO CURRENT VALUES OF LOGITUDE AND LATITUDE
+  */
+  
+  mymap.setView([latitude, longitude], mymap.getZoom());
+  marker.setLatLng([latitude, longitude]);
 
-  // Chaning Visibility Icon depending on value.
+  /*
+    CHANGING VISIBILITY ICON DEPENDING ON THE VALUE PASSED
+  */
+
   if (visibility === 'eclipsed') {
-    document.getElementById('weather-icon').src = '../icons/eclipsed-icon-48.png';
+    document.getElementById('weather-icon').src = '../Icons/eclipsed-icon-48.png';
   } else {
-    document.getElementById('weather-icon').src = '../icons/daylight-icon-48.png';
+    document.getElementById('weather-icon').src = '../Icons/daylight-icon-48.png';
   }
 }
 
+/*
+  INFORMATION BOX POPOP WHEN INFO BUTTON IS PRESSED 
+  *LOCATED IN SECOND CARD WHERE ALTITUDE AND VELOCITY VALUES ARE
+*/
 
-// Information box description
 const informationButton = document.getElementById('information-icon');
 const informationButtonPopUpDescription = document.getElementById('information-shown-when-clicked');
 
@@ -113,6 +133,9 @@ informationButton.addEventListener('click', () => {
   }
 });
 
+/*
+  API REQUEST RATE IS SET TO 1 SECOND, HENCE THE SETINTERVAL OF 1000
+*/
 
 getDataFromIssApi();
 setInterval(getDataFromIssApi, 1000);
